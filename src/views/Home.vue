@@ -19,7 +19,7 @@
 </template>
 <script>
 import { computed } from "vue";
-import { useStore } from "vuex";
+import {useTagStore} from "@/store/tag";
 import vHeader from "../components/Header.vue";
 import vSidebar from "../components/Sidebar.vue";
 import vTags from "../components/Tags.vue";
@@ -30,11 +30,12 @@ export default {
         vTags,
     },
     setup() {
-        const store = useStore();
+        const store = useTagStore();
+      console.log(store.tagsList, store.tagsList.value)
         const tagsList = computed(() =>
-            store.state.tagsList.map((item) => item.name)
+            store.tagsList.map((item) => item.name)
         );
-        const collapse = computed(() => store.state.collapse);
+        const collapse = computed(() => store.collapse);
         return {
             tagsList,
             collapse,

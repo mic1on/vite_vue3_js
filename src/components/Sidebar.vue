@@ -33,7 +33,7 @@
 
 <script>
 import { computed, watch } from "vue";
-import { useStore } from "vuex";
+import {useTagStore} from "@/store/tag";
 import { useRoute } from "vue-router";
 export default {
     setup() {
@@ -121,8 +121,8 @@ export default {
             return route.path;
         });
 
-        const store = useStore();
-        const collapse = computed(() => store.state.collapse);
+        const store = useTagStore();
+        const collapse = computed(() => store.collapse);
 
         return {
             items,

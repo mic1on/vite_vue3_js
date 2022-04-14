@@ -21,7 +21,6 @@
                 <div class="user-avator">
                     <img src="../assets/img/img.jpg" />
                 </div>
-                <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
                         {{username}}
@@ -29,9 +28,6 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <a href="https://github.com/lin-xin/vue-manage-system" target="_blank">
-                                <el-dropdown-item>项目仓库</el-dropdown-item>
-                            </a>
                             <el-dropdown-item command="user">个人中心</el-dropdown-item>
                             <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
                         </el-dropdown-menu>
@@ -43,18 +39,18 @@
 </template>
 <script>
 import { computed, onMounted } from "vue";
-import { useStore } from "vuex";
+import {useTagStore} from "@/store/tag";
 import { useRouter } from "vue-router";
 export default {
     setup() {
         const username = localStorage.getItem("ms_username");
         const message = 2;
 
-        const store = useStore();
-        const collapse = computed(() => store.state.collapse);
+        const store = useTagStore();
+        const collapse = computed(() => store.collapse);
         // 侧边栏折叠
         const collapseChage = () => {
-            store.commit("handleCollapse", !collapse.value);
+            store.handleCollapse(!collapse.value);
         };
 
         onMounted(() => {
@@ -66,10 +62,10 @@ export default {
         // 用户名下拉菜单选择事件
         const router = useRouter();
         const handleCommand = (command) => {
-            if (command == "loginout") {
+            if (command === "loginout") {
                 localStorage.removeItem("ms_username");
                 router.push("/login");
-            } else if (command == "user") {
+            } else if (command === "user") {
                 router.push("/user");
             }
         };
