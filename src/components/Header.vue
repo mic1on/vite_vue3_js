@@ -50,12 +50,13 @@ export default {
         const collapse = computed(() => store.collapse);
         // 侧边栏折叠
         const collapseChage = () => {
+          console.log('collapse', collapse)
             store.handleCollapse(!collapse.value);
         };
 
         onMounted(() => {
             if (document.body.clientWidth < 1500) {
-                collapseChage();
+                // collapseChage();
             }
         });
 

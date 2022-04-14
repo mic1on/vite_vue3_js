@@ -3,7 +3,7 @@ import {defineStore} from 'pinia'
 export const useTagStore = defineStore('tag', {
     state: () => ({
         tagsList: [],
-        collapse: false
+        collapse: true
     }),
     getters: {
     },

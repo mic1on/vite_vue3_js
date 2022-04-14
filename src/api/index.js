@@ -1,9 +1,5 @@
-import request from '../utils/request';
+import service from '@/utils/service.js';
+const { axiosService, HTTP_TYPE } = service;
 
-export const fetchData = query => {
-    return request({
-        url: './table.json',
-        method: 'get',
-        params: query
-    });
-};
+
+export const fetchData = params => axiosService(HTTP_TYPE.GET, './table.json', params)

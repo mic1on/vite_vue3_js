@@ -19,7 +19,8 @@
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.10",
     "vue-schart": "^2.0.0",
-    "wangeditor": "^4.7.4"
+    "wangeditor": "^4.7.4",
+    "qs": "^6.9.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.3",
